@@ -1,0 +1,133 @@
+﻿
+> client@0.0.0 build
+> vite build
+
+[36mvite v7.1.12 [32mbuilding for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 45 modules transformed.
+node.exe : 
+[31mΓ£ù[39m Build 
+failed in 648ms
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([31mΓ£ù[39m   
+  Build failed in 6    
+48ms:String) [], R    
+emoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+[31merror during 
+build:
+[31msrc/App.jsx 
+(3:7): "default" is 
+not exported by "src/co
+mponents/Header.jsx", 
+imported by 
+"src/App.jsx".[31m
+file: [36mC:/Users/S 
+K/Documents/my projects
+/practice3/mern-app/cli
+ent/src/App.jsx:3:7[31
+m
+[33m
+1: import { 
+BrowserRouter, Routes, 
+Route } from 
+"react-router-dom";
+2: import Singlepage 
+from 
+"./pages/Singlepage"
+3: import Header from 
+"./components/Header"
+          ^
+4: import Footer from 
+"./components/Footer"
+[31m
+    at getRollupError (
+file:///C:/Users/S%20K/
+Documents/my%20projects
+/practice3/mern-app/cli
+ent/node_modules/rollup
+/dist/es/shared/parseAs
+t.js:401:41)
+    at error (file:///C
+:/Users/S%20K/Documents
+/my%20projects/practice
+3/mern-app/client/node_
+modules/rollup/dist/es/
+shared/parseAst.js:397:
+42)
+    at Module.error (fi
+le:///C:/Users/S%20K/Do
+cuments/my%20projects/p
+ractice3/mern-app/clien
+t/node_modules/rollup/d
+ist/es/shared/node-entr
+y.js:16939:16)
+    at 
+Module.traceVariable (f
+ile:///C:/Users/S%20K/D
+ocuments/my%20projects/
+practice3/mern-app/clie
+nt/node_modules/rollup/
+dist/es/shared/node-ent
+ry.js:17391:29)
+    at ModuleScope.find
+Variable (file:///C:/Us
+ers/S%20K/Documents/my%
+20projects/practice3/me
+rn-app/client/node_modu
+les/rollup/dist/es/shar
+ed/node-entry.js:15061:
+39)
+    at FunctionScope.fi
+ndVariable (file:///C:/
+Users/S%20K/Documents/m
+y%20projects/practice3/
+mern-app/client/node_mo
+dules/rollup/dist/es/sh
+ared/node-entry.js:5642
+:38)
+    at FunctionBodyScop
+e.findVariable (file://
+/C:/Users/S%20K/Documen
+ts/my%20projects/practi
+ce3/mern-app/client/nod
+e_modules/rollup/dist/e
+s/shared/node-entry.js:
+5642:38)
+    at Identifier.bind 
+(file:///C:/Users/S%20K
+/Documents/my%20project
+s/practice3/mern-app/cl
+ient/node_modules/rollu
+p/dist/es/shared/node-e
+ntry.js:5413:40)
+    at 
+CallExpression.bind (fi
+le:///C:/Users/S%20K/Do
+cuments/my%20projects/p
+ractice3/mern-app/clien
+t/node_modules/rollup/d
+ist/es/shared/node-entr
+y.js:2800:28)
+    at 
+CallExpression.bind (fi
+le:///C:/Users/S%20K/Do
+cuments/my%20projects/p
+ractice3/mern-app/clien
+t/node_modules/rollup/d
+ist/es/shared/node-entr
+y.js:12108:15)[39m
