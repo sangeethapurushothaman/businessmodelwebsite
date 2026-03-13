@@ -1,101 +1,76 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const links = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
+    { name: "Home", href: "#top" },
+    { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Why Choose Us", href: "#why-us" },
+    { name: "Why Us", href: "#why-us" },
     { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="w-full bg-white sticky top-0 z-[100] border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-5">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          
-          {/* LOGO - stays on the left */}
-          <div className="flex items-center space-x-2 z-[110]">
-            <div className="w-9 h-9 bg-blue-600 text-white flex items-center justify-center rounded-lg font-bold">
-              A
-            </div>
-            <h1 className="text-xl font-bold text-gray-900">
-              Apex<span className="text-blue-600">Corp</span>
-            </h1>
-          </div>
+    <header className="fixed top-4 left-0 w-full z-50 px-6">
+      <div className="max-w-7xl mx-auto">
 
-          {/* DESKTOP NAV - hidden on mobile, shows on md screens (768px+) */}
-          <nav className="hidden md:flex items-center space-x-8">
+        {/* Glass Navbar */}
+        <div className="bg-white/80 backdrop-blur-xl border border-gray-200 shadow-lg rounded-2xl px-6 py-3 flex items-center justify-between">
+
+          {/* LOGO */}
+          <Link to="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-3 cursor-pointer"
+            >
+              <div className="w-10 h-10 bg-blue-600 text-white flex items-center justify-center rounded-lg font-bold text-lg shadow-lg shadow-blue-200">
+                A
+              </div>
+
+              <h1 className="text-lg font-semibold text-gray-800">
+                Apex<span className="text-blue-600 font-bold">Corp</span>
+              </h1>
+            </motion.div>
+          </Link>
+
+          {/* NAV LINKS */}
+          <nav className="hidden md:flex items-center gap-6">
+
             {links.map((link) => (
-              <a key={link.name} href={link.href} className="text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors">
+              <motion.a
+                key={link.name}
+                href={isHome ? link.href : `/${link.href}`}
+                whileHover={{ y: -2 }}
+                className="relative px-4 py-2 text-gray-600 font-medium hover:text-blue-600 transition"
+              >
                 {link.name}
-              </a>
+
+                {/* Animated underline */}
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 hover:w-full"></span>
+              </motion.a>
             ))}
-            {/* This is the desktop version of the button */}
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition-all shadow-md">
-              Get a Quote
-            </button>
+
           </nav>
 
-          {/* MOBILE TOGGLE - hidden on desktop, shows on mobile */}
-          <button 
-            className="md:hidden p-2 text-gray-600 z-[110] relative"
-            onClick={() => setIsOpen(!isOpen)}
+          {/* CTA BUTTON */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-medium shadow-md hover:shadow-lg transition"
           >
-            {isOpen ? <X size={30} /> : <Menu size={30} />}
-          </button>
-        </div>
-      </div>
+            Get Quote
+            <ArrowRight size={18} />
+          </motion.button>
 
-      {/* MOBILE MENU DRAWER */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Dark background blur */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[90] md:hidden"
-            />
-            
-            {/* The Actual Menu */}
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed top-0 right-0 h-full w-[85%] max-w-[320px] bg-white z-[100] shadow-2xl md:hidden pt-24 px-8"
-            >
-              <div className="flex flex-col space-y-6">
-                {links.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-bold text-gray-800 border-b border-gray-50 pb-3"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-                
-                {/* MOBILE "GET A QUOTE" - Inside the Drawer */}
-                <div className="pt-4">
-                  <button className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-transform">
-                    Get a Quotessss
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+        </div>
+
+      </div>
     </header>
   );
 };
